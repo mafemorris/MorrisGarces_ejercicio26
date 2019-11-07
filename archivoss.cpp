@@ -8,6 +8,7 @@ float* lee(string, int*);
 float* multip(float*,float*, int);
 //
 void escribe(string,float*, int);
+void escribe(string,int*, int);
 
 void factorial(int*, int);
 
@@ -29,7 +30,11 @@ int main(){
     delete y;
 
     int* factores;
-    factorial(factores,4);
+    int numero = 4;
+    factores = new int[numero];
+    factorial(factores,numero);
+    cout<< factores[1]<<endl;
+    escribe("factorial.txt",factores,numero+1);
 
     return 0;
 }
@@ -88,8 +93,18 @@ void escribe(string archivo, float* datos, int n_dat){
   outfile.close(); 
 }
 
+void escribe(string archivo, int* datos, int n_dat){
+  ofstream outfile;
+
+  outfile.open(archivo);
+
+  for (int i=0; i < n_dat; i++){
+    outfile << datos[i] << endl;
+  }
+  outfile.close(); 
+}
+
 void factorial(int* factores, int numero){
-    factores = new int[numero];
     factores[0]=1;
 
     for(int i = 1; i<numero+1;i++){
