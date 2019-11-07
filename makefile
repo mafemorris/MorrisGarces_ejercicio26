@@ -1,8 +1,8 @@
-multiplicacion.txt : archivoss.x
-	./archivoss.x
+multiplicacion.txt factorial.txt : ejercicios.x
+	./ejercicios.x
 
-archivoss.x : archivos.cpp
-	c++ archivoss.cpp -o archivoss.x
+ejercicios.x : ejercicios.cpp
+	g++ ejercicios.cpp factorial.cpp archivos.cpp -o ejercicios.x
 
 clear :
-	rm archivoss.x multiplicacion.txt
+	rm ejercicios.x multiplicacion.txt factorial.txt
