@@ -7,22 +7,14 @@ using namespace std;
  * Parámetro numero: Numero hasta el cual se quiera hacer factorial.
  */
 void factorial(int* factores, int numero){
+    //primer valor de la lista, que corresponde a 0!=1.
     factores[0]=1;
 
     for(int i = 1; i<numero+1;i++){
+        //agrega el factorial al apuntador en la posición requerida.
         factores[i] = i * factores[i-1];
-        cout<< factores[i]<<endl;
     }
 }
 
-void escribe(string archivo, int* datos, int n_dat){
-  ofstream outfile;
 
-  outfile.open(archivo);
-
-  for (int i=0; i < n_dat; i++){
-    outfile << datos[i] << endl;
-  }
-  outfile.close(); 
-}
 

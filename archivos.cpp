@@ -7,34 +7,44 @@ using namespace std;
  * Parámetro puntos: Apuntador a la cantidad de datos del archivo. 
  * Retorna una lista con los datos de tipo float. */
 float* lee(string archivo, int* puntos){
+    //Número de lineas del archivo.
     int lineas = 0;
     ifstream infile; 
     string line;
+    //Apuntador de la lista que está en el archivo.
     float *a;
 
+    //Abre el archivo.
+    infile.open(archivo); 
+    //Trae cada linea.
+    getline(infile, line);
+
+
+    while(infile){
+        //Agrega en 1 por cada linea del archivo.
+        lineas ++;
+        getline(infile, line);
+    }
+    //cierra el archivo.
+    infile.close();
+
+    //Abre el archivo esta vez para sacar cada elemento.
     infile.open(archivo); 
     getline(infile, line);
+
+    //Longitud de la lista que va a ser resultado.
+    *puntos = lineas;
+    //Inicializa la lista.
+    a = new float[lineas];
 
     int i=0;
     while(infile){
-        lineas ++;
+        //Convierte de string a float.
+        a[i] = atof(line.c_str());
         i++;
         getline(infile, line);
     }
-    infile.close();
-
-    infile.open(archivo); 
-    getline(infile, line);
-
-    *puntos = lineas;
-    a = new float[lineas];
-
-    int j=0;
-    while(infile){
-        a[j] = atof(line.c_str());
-        j++;
-        getline(infile, line);
-    }
+    //Cierra el archivo.
     infile.close();
 
     return a;
@@ -45,22 +55,13 @@ float* lee(string archivo, int* puntos){
  * Parámetro l2: apuntador al arreglo 2. Inicializado, con los valores de tipo float. De tamaño num. 
  * Retorna un arreglo con la multiplicación.*/
 float* multip(float* l1,float* l2, int num){
+    //Apuntador de la lista l1*l2.
     float* l = NULL;
+    //Inicializa la lista del tamaño de las listas que vienen por parámetro.
     l = new float[num];
     for(int i = 0; i<num; i++){
+        //multiplica en la posición.
         l[i]=l1[i]*l2[i];
     }
     return l;
-}
-
-
-void escribe(string archivo, float* datos, int n_dat){
-  ofstream outfile;
-
-  outfile.open(archivo);
-
-  for (int i=0; i < n_dat; i++){
-    outfile << datos[i] << endl;
-  }
-  outfile.close(); 
 }
