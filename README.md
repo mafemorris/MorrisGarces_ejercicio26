@@ -1,5 +1,5 @@
 # Ejercicio 26
-Archivo principal ejercicios.cpp
+Archivo principal ejercicios.cpp \n
 Header ejercicios.hpp
 Ejercicio 1 factorial.cpp
 Ejercicio 2 archivo.cpp
